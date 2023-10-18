@@ -1,4 +1,5 @@
 import React from "react";
+import categories from "../../data/categories.tsx"
 import "./Home.css";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
         ["Snacks", "Bakery", "Dairy"]
     ];
 
+    console.log(categories)
     const showImage = true;
 
     return (
@@ -16,12 +18,12 @@ const Home = () => {
                 <h1>Shoppy Shop</h1>
             </header>
             <div className="category-grid">
-                {categoryArray.map((row, rowIndex) => (
+                {categories.map((row, rowIndex) => (
                 <div className="category-row" key={rowIndex}>
                     {row.map((category, cellIndex) => (
                     <button key={cellIndex} className="category-button">
                         {showImage && <img src=""/>}
-                        {category}
+                        {category.title}
                     </button>
                     ))}
                 </div>
