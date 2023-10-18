@@ -1,3 +1,33 @@
 .home-page {
-    background-color: aliceblue;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.category-row {
+    display: flex;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.category-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 75%;
+    transition: 0.3s background-color;
+}
+
+.category-button:hover {
+    background-color: darkgrey;
 }
