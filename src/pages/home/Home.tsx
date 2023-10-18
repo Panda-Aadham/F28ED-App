@@ -8,14 +8,19 @@ const Home = () => {
         ["Snacks", "Bakery", "Dairy"]
     ];
 
+    const showImage = true;
+
     return (
         <div className="home-page">
-            <h1>Shoppy Shop</h1>
+            <header>
+                <h1>Shoppy Shop</h1>
+            </header>
             <div className="category-grid">
                 {categoryArray.map((row, rowIndex) => (
                 <div className="category-row" key={rowIndex}>
                     {row.map((category, cellIndex) => (
                     <button key={cellIndex} className="category-button">
+                        {showImage && <img src=""/>}
                         {category}
                     </button>
                     ))}
