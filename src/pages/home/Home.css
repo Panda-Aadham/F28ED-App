@@ -14,6 +14,8 @@
 .category-button {
     flex: 1;
     display: flex;
+    flex-direction: column;
+    text-align: center;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -28,3 +30,8 @@
 .category-button:hover {
     background-color: darkgrey;
 }
+
+.category-image {
+    width: 60%;
+    max-width: 100%; /* Ensure the image doesn't exceed the button's width */
+  }

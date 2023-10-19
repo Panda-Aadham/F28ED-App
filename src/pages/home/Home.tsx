@@ -3,13 +3,6 @@ import categories from "../../data/categories.tsx"
 import "./Home.css";
 
 const Home = () => {
-    const categoryArray = [
-        ["Fruits", "Pasta", "Juice"],
-        ["Meats", "Fish", "Vegetables"],
-        ["Snacks", "Bakery", "Dairy"]
-    ];
-
-    console.log(categories)
     const showImage = true;
 
     return (
@@ -22,7 +15,7 @@ const Home = () => {
                 <div className="category-row" key={rowIndex}>
                     {row.map((category, cellIndex) => (
                     <button key={cellIndex} className="category-button">
-                        {showImage && <img src=""/>}
+                        {showImage && <img src={category.image} className="category-image"/>}
                         {category.title}
                     </button>
                     ))}

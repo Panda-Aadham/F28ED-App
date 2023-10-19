@@ -2,7 +2,7 @@ import { category } from "../interfaces";
 
 const dairy: category = {
     title: "Dairy",
-    image: "",
+    image: process.env.PUBLIC_URL + '/images/category/dairy.jpg',
     path: "/dairy",
     items: []
 }
