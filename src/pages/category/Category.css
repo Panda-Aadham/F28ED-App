@@ -19,8 +19,8 @@
 }
 
 .item-button {
+    flex: 1;
     display: flex;
-    flex-direction: column;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -38,6 +38,11 @@
     background-color: darkgrey;
 }
 
+.item-image {
+    align-self:self-start;
+    width: 15%;
+    max-width: 100%;
+}
 
 .category-back-button {
     width: 30%;

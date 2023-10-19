@@ -33,6 +33,10 @@ const Category = () => {
                     <button
                         key={index}
                         className="item-button">
+                        <img 
+                            src={item.image}
+                            alt="item image"
+                            className="item-image"/>
                         {item.title}
                     </button>
                 ))}

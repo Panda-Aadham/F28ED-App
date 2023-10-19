@@ -20,9 +20,9 @@ const vegetables: category = {
             price: 1.50,
         },
         {
-            title: "Spinach",
-            image: process.env.PUBLIC_URL + '/images/grocery/spinach.jpg',
-            path: "/spinach",
+            title: "Cabbage",
+            image: process.env.PUBLIC_URL + '/images/grocery/cabbage.jpg',
+            path: "/cabbage",
             description: "",
             price: 2.25,
         },

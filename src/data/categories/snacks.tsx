@@ -6,9 +6,9 @@ const snacks: category = {
     path: "/snacks",
     items: [
         {
-            title: "Chips",
-            image: process.env.PUBLIC_URL + '/images/grocery/chips.jpg',
-            path: "/chips",
+            title: "Crisps",
+            image: process.env.PUBLIC_URL + '/images/grocery/crisps.jpg',
+            path: "/crisps",
             description: "",
             price: 2.00,
         },
