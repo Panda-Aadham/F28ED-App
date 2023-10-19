@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import categories from "../../data/categories.tsx"
+import { category } from "../../data/interfaces.tsx";
 import "./Home.css";
 
 const Home = () => {
+    const navigate = useNavigate();
     const showImage = true;
+
+    const handleClick = (category: category) => {
+        navigate(category.path)
+    }
 
     return (
         <div className="home-page">
@@ -14,8 +21,14 @@ const Home = () => {
                 {categories.map((row, rowIndex) => (
                 <div className="category-row" key={rowIndex}>
                     {row.map((category, cellIndex) => (
-                    <button key={cellIndex} className="category-button">
-                        {showImage && <img src={category.image} className="category-image"/>}
+                    <button
+                        key={cellIndex}
+                        className="category-button"
+                        onClick={() => handleClick(category)}>
+                        {showImage && <img 
+                            src={category.image}
+                            className="category-image"
+                            alt="category image"/>}
                         {category.title}
                     </button>
                     ))}
