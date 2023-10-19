@@ -9,7 +9,7 @@ const Home = () => {
     const showImage = true;
 
     const handleClick = (category: category) => {
-        navigate(category.path)
+        navigate("/category" + category.path)
     }
 
     return (

@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Home from './pages/home/Home.tsx';
+import Category from './pages/category/Category.tsx';
+import fruits from "./data/categories/fruits.tsx"
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -10,7 +12,7 @@ root.render(
   <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Define other routes here */}
+        <Route path="/category/:categoryName" element={<Category />} />
       </Routes>
   </BrowserRouter>
 );
