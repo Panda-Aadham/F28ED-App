@@ -6,17 +6,17 @@ const fruits: category = {
     path: "/fruits",
     items: [
         {
-            title: "Apple",
-            image: process.env.PUBLIC_URL + '/images/grocery/apple.jpg',
-            path: "/apple",
-            description: "Crisp and juicy",
+            title: "Banana",
+            image: process.env.PUBLIC_URL + '/images/grocery/banana.jpg',
+            path: "/banana",
+            description: "Crisp and yummy",
             price: 1.50,
         },
         {
-            title: "Orange",
-            image: process.env.PUBLIC_URL + '/images/grocery/orange.jpg',
-            path: "/orange",
-            description: "Sweet and plump",
+            title: "Pineapple",
+            image: process.env.PUBLIC_URL + '/images/grocery/pineapple.jpg',
+            path: "/pineapple",
+            description: "Sweet and prickly",
             price: 1.00,
         },
         {
