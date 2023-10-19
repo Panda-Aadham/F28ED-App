@@ -14,7 +14,7 @@ const Home = () => {
 
     return (
         <div className="home-page">
-            <header>
+            <header className="home-title">
                 <h1>Shoppy Shop</h1>
             </header>
             <div className="category-grid">
