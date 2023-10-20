@@ -9,6 +9,8 @@ const Category = () => {
     const navigate = useNavigate();
     const [data, setData] = useState<category>();
 
+    const showImage = true;
+
     // Find the category data for the page
     useEffect(() => {
         categories.forEach((row) => {
@@ -18,6 +20,10 @@ const Category = () => {
         }
         )
     }, [])
+
+    const handleClickItem = (item) => {
+        navigate("/category/" + categoryName + item.path)
+    }
 
     const handleClickBack = () => {
         navigate("/")
@@ -32,11 +38,12 @@ const Category = () => {
                 {data.items.map((item, index) => (
                     <button
                         key={index}
-                        className="item-button">
-                        <img 
+                        className="item-button"
+                        onClick={() => handleClickItem(item)}>
+                        {showImage && <img 
                             src={item.image}
                             alt="item image"
-                            className="item-image"/>
+                            className="item-image"/>}
                         {item.title}
                     </button>
                 ))}
