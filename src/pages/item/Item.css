@@ -21,6 +21,12 @@
     width: 30%;
 }
 
+.item-control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .item-cart-grid {
     display: flex;
     width: 350px;

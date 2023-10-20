@@ -5,8 +5,9 @@ import { useParams } from "react-router-dom";
 import "./Item.css";
 
 const Item = () => {
-    const { categoryName, itemName } = useParams()
-    const [itemData, setItemData] = useState<grocery>()
+    const { categoryName, itemName } = useParams();
+    const [itemData, setItemData] = useState<grocery>();
+    const [quantity, setQuantity] = useState(0);
 
     const showImage = true;
 
@@ -22,6 +23,12 @@ const Item = () => {
         })
     }, [])
 
+    const handleClickQuantity = (value: number) => {
+        if (quantity == 0) {
+            if (value != -1)
+                setQuantity(quantity + value)
+        } else setQuantity(quantity + value)
+    }
     
     return(
         itemData && <div className="item-page">
@@ -37,9 +44,13 @@ const Item = () => {
             <div className="item-control">
                 <h3>Quantity</h3>
                 <div className="item-cart-grid">
-                    <button className="item-cart-button">-</button>
-                    <span className="number">42</span>
-                    <button className="item-cart-button">+</button>
+                    <button
+                        onClick={() => handleClickQuantity(-1)}
+                        className="item-cart-button">-</button>
+                    <span className="number">{quantity}</span>
+                    <button
+                        onClick={() => handleClickQuantity(1)}
+                        className="item-cart-button">+</button>
                 </div>
             </div>
         </div>
