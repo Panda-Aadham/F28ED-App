@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import categories from "../../data/categories.tsx";
 import { grocery } from "../../data/interfaces";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Item.css";
 
 const Item = () => {
     const { categoryName, itemName } = useParams();
+    const navigate = useNavigate();
     const [itemData, setItemData] = useState<grocery>();
     const [quantity, setQuantity] = useState(0);
 
@@ -22,6 +23,10 @@ const Item = () => {
             }
         })
     }, [])
+
+    const handleClickBack = () => {
+        navigate("/category/" + categoryName)
+    }
 
     const handleClickQuantity = (value: number) => {
         if (quantity == 0) {
@@ -52,6 +57,13 @@ const Item = () => {
                         onClick={() => handleClickQuantity(1)}
                         className="item-cart-button">+</button>
                 </div>
+                <button
+                    className="item-cart-button item-add-cart">Add to cart</button>
+                <button
+                    className="item-back-button"
+                    onClick={handleClickBack}>
+                    Back
+                </button>
             </div>
         </div>
     )

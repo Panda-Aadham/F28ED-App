@@ -54,3 +54,23 @@
     font-size: 24px;
     font-weight: bold;
 }
+
+.item-cart-button.item-add-cart {
+    width: 125px;
+    background-color: green;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.item-back-button {
+    align-self: self-start;
+    width: 125px;
+    height: 60px;
+    border-radius: 20px;
+    font-size: 100%;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    border: transparent;
+    background-color:slategrey;
+}
