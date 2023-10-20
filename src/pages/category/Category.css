@@ -22,6 +22,7 @@
 .category-cart {
     margin-left: auto;
     margin-right: 25px;
+    cursor: pointer;
 }
 
 .item-grid {

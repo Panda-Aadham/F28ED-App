@@ -4,6 +4,7 @@ import './index.css';
 import Home from './pages/home/Home.tsx';
 import Category from './pages/category/Category.tsx';
 import Item from './pages/item/Item.tsx';
+import Cart from './pages/cart/Cart.tsx';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -14,6 +15,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/category/:categoryName" element={<Category />} />
         <Route path="/category/:categoryName/:itemName" element={<Item />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
   </BrowserRouter>
 );

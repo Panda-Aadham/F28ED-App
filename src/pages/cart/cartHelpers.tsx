@@ -5,9 +5,13 @@ interface cartItem {
     quantity: number;
 }
 
-type cart = cartItem[]
+export type cart = cartItem[]
 
-const getCart = () => {
+export const setLastPath = () => {
+    window.localStorage.setItem("lastPath", window.location.pathname)
+}
+
+export const getCart = () => {
     const cartStore = window.localStorage.getItem("cart");
     const items: cart = cartStore ? JSON.parse(cartStore) : undefined;
     return items;

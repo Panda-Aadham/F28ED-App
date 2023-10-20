@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { grocery } from "../../data/interfaces";
 import categories from "../../data/categories.tsx";
-import { addItem, removeItem } from "../cart/cartHelpers.tsx";
+import { addItem, setLastPath } from "../cart/cartHelpers.tsx";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Item.css";
 
@@ -14,6 +14,7 @@ const Item = () => {
 
     const showImage = true;
 
+    // Find item data from category
     useEffect(() => {
         categories.forEach((row) => {
             const foundCell = row.find(
@@ -29,7 +30,12 @@ const Item = () => {
     const handleClickBack = () => {
         navigate("/category/" + categoryName)
     }
-    
+
+    const handleClickCart = () => {
+        setLastPath();
+        navigate("/cart")
+    }
+
     // Increase/decrease quantity
     const handleClickQuantity = (value: number) => {
         if (quantity == 0) {
@@ -42,7 +48,7 @@ const Item = () => {
         itemData && <div className="item-page">
             <header className="item-header">
                 <h1 className="item-title">{itemData.title}</h1>
-                <div>
+                <div onClick={handleClickCart}>
                     <ShoppingCartIcon fontSize="large" className="item-cart"/>
                 </div>
             </header>
