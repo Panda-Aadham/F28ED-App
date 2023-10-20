@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import categories from "../../data/categories.tsx";
 import { grocery } from "../../data/interfaces";
 import { useNavigate, useParams } from "react-router-dom";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Item.css";
 
 const Item = () => {
@@ -37,8 +38,11 @@ const Item = () => {
     
     return(
         itemData && <div className="item-page">
-            <header className="item-title">
-                <h1>{itemData.title}</h1>
+            <header className="item-header">
+                <h1 className="item-title">{itemData.title}</h1>
+                <div>
+                    <ShoppingCartIcon fontSize="large" className="item-cart"/>
+                </div>
             </header>
             <div className="item-display">
                 {showImage && <img 

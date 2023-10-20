@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import categories from "../../data/categories.tsx";
 import { category } from "../../data/interfaces";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Category.css";
 
 const Category = () => {
@@ -31,8 +32,11 @@ const Category = () => {
 
     return(
         data && <div className="category-page">
-            <header className="category-title">
-                <h1>{data.title}</h1>
+            <header className="category-header">
+                <h1 className="category-title">{data.title}</h1>
+                <div>
+                    <ShoppingCartIcon fontSize="large" className="category-cart"/>
+                </div>
             </header>
             <div className="item-grid">
                 {data.items.map((item, index) => (
