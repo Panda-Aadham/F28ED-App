@@ -39,7 +39,6 @@
 }
 
 .item-image {
-    align-self:self-start;
     width: 15%;
     max-width: 100%;
     margin-right: 20px;
