@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import categories from "../../data/categories.tsx";
-import { grocery } from "../../data/interfaces";
 import { useNavigate, useParams } from "react-router-dom";
+import { grocery } from "../../data/interfaces";
+import categories from "../../data/categories.tsx";
+import { addItem, removeItem } from "../cart/cartHelpers.tsx";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Item.css";
 
@@ -28,7 +29,8 @@ const Item = () => {
     const handleClickBack = () => {
         navigate("/category/" + categoryName)
     }
-
+    
+    // Increase/decrease quantity
     const handleClickQuantity = (value: number) => {
         if (quantity == 0) {
             if (value != -1)
@@ -62,7 +64,8 @@ const Item = () => {
                         className="item-cart-button">+</button>
                 </div>
                 <button
-                    className="item-cart-button item-add-cart">Add to cart</button>
+                    className="item-cart-button item-add-cart"
+                    onClick={() => addItem(itemData, quantity)}>Add to cart</button>
                 <button
                     className="item-back-button"
                     onClick={handleClickBack}>
