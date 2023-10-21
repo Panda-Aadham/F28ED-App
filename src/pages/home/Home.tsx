@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import categories from "../../data/categories.tsx"
 import { category } from "../../data/interfaces.tsx";
+import { setLastPath } from "../cart/cartHelpers.tsx";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Home.css";
 
@@ -13,11 +14,16 @@ const Home = () => {
         navigate("/category" + category.path)
     }
 
+    const handleClickCart = () => {
+        setLastPath();
+        navigate("/cart")
+    }
+
     return (
         <div className="home-page">
             <header className="home-header">
                 <h1 className="home-title">Shoppy Shop</h1>
-                <div>
+                <div onClick={handleClickCart}>
                     <ShoppingCartIcon fontSize="large" className="home-cart"/>
                 </div>
             </header>

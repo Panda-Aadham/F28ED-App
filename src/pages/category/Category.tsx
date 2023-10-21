@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import categories from "../../data/categories.tsx";
+import { setLastPath } from "../cart/cartHelpers.tsx";
 import { category } from "../../data/interfaces";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Category.css";
@@ -26,6 +27,11 @@ const Category = () => {
         navigate("/category/" + categoryName + item.path)
     }
 
+    const handleClickCart = () => {
+        setLastPath();
+        navigate("/cart")
+    }
+
     const handleClickBack = () => {
         navigate("/")
     }
@@ -34,7 +40,7 @@ const Category = () => {
         data && <div className="category-page">
             <header className="category-header">
                 <h1 className="category-title">{data.title}</h1>
-                <div>
+                <div onClick={handleClickCart}>
                     <ShoppingCartIcon fontSize="large" className="category-cart"/>
                 </div>
             </header>
