@@ -18,6 +18,14 @@ const Cart = () => {
         setCartData(getCart());
     }
 
+    const handleCheckout = () => {
+        const start = window.localStorage.getItem("startTime")
+        const end = new Date().getTime();
+        if (start) {
+            console.log(end - parseInt(start))
+        }
+    }
+
     // Refresh cart data
     useEffect(() => {
         setCartData(getCart());
@@ -56,7 +64,7 @@ const Cart = () => {
                     </button>
                     <button
                         className="cart-checkout-button"
-                        onClick={handleClickBack}>
+                        onClick={handleCheckout}>
                         Checkout
                     </button>
                 </div>

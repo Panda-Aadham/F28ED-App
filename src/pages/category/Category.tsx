@@ -33,7 +33,7 @@ const Category = () => {
     }
 
     const handleClickBack = () => {
-        navigate("/")
+        navigate("/home")
     }
 
     return(

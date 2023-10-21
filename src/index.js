@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import Start from './pages/start/Start.tsx';
 import Home from './pages/home/Home.tsx';
 import Category from './pages/category/Category.tsx';
 import Item from './pages/item/Item.tsx';
@@ -12,7 +13,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Start />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/category/:categoryName" element={<Category />} />
         <Route path="/category/:categoryName/:itemName" element={<Item />} />
         <Route path="/cart" element={<Cart />} />
