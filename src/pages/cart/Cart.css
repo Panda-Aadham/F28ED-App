@@ -25,6 +25,7 @@
 .cart-items {
     display: flex;
     flex-direction: column;
+    height: 60vh;
 }
 
 .cart-item {
@@ -60,4 +61,24 @@
 
 .cart-item-qbtn:hover {
     background-color: gray;
+}
+
+.cart-buttons {
+    display: flex;
+    padding-left: 25px;
+    padding-right: 15px;
+    margin-top: auto;
+}
+
+.cart-checkout-button {
+    margin-left: auto;
+    width: 125px;
+    height: 60px;
+    border-radius: 20px;
+    font-size: 100%;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    border: transparent;
+    background-color: green;
 }

@@ -48,11 +48,18 @@ const Cart = () => {
                         </div>
                     </div>
                 ))}
-                <button
-                    className="cart-back-button"
-                    onClick={handleClickBack}>
-                    Back
-                </button>
+                <div className="cart-buttons">
+                    <button
+                        className="cart-back-button"
+                        onClick={handleClickBack}>
+                        Back
+                    </button>
+                    <button
+                        className="cart-checkout-button"
+                        onClick={handleClickBack}>
+                        Checkout
+                    </button>
+                </div>
             </div>
         </div>
     )
