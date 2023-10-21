@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { cart, getCart } from "./cartHelpers.tsx";
-import "./Cart.css";
+import { addItem, removeItem, cart, getCart } from "./cartHelpers.tsx";
 import { useNavigate } from "react-router-dom";
+import { grocery } from "../../data/interfaces.js";
+import "./Cart.css";
 
 const Cart = () => {
     const [cartData, setCartData] = useState<cart>([]);
     const navigate = useNavigate();
 
+    const handleRemoveItem = (item: grocery) => {
+        removeItem(item, 1)
+        setCartData(getCart());
+    }
+    
+    const handleAddItem = (item: grocery) => {
+        addItem(item, 1)
+        setCartData(getCart());
+    }
+
+    // Refresh cart data
     useEffect(() => {
         setCartData(getCart());
-    }, [window.localStorage.getItem("cart")])
+    }, [])
 
     const handleClickBack = () => {
         const path = window.localStorage.getItem("lastPath")
@@ -27,9 +39,11 @@ const Cart = () => {
                         <div className="cart-item-title">{grocery.item.title}</div>
                         <div className="cart-quantity">
                             <button
+                            onClick={() => handleRemoveItem(grocery.item)}
                             className="cart-item-qbtn">-</button>
                             <div className="cart-item-quantity">{grocery.quantity}</div>
                             <button
+                            onClick={() => handleAddItem(grocery.item)}
                             className="cart-item-qbtn">+</button>
                         </div>
                     </div>
