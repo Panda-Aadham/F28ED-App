@@ -22,9 +22,16 @@ const Cart = () => {
                 <h1>Shopping Cart</h1>
             </header>
             <div className="cart-items">
-                {cartData.map((item, index) => (
+                {cartData.map((grocery, index) => (
                     <div key={index} className="cart-item">
-                        
+                        <div className="cart-item-title">{grocery.item.title}</div>
+                        <div className="cart-quantity">
+                            <button
+                            className="cart-item-qbtn">-</button>
+                            <div className="cart-item-quantity">{grocery.quantity}</div>
+                            <button
+                            className="cart-item-qbtn">+</button>
+                        </div>
                     </div>
                 ))}
                 <button
