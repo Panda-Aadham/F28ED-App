@@ -7,6 +7,7 @@ const Start = () => {
 
     const handleClick = (showImage: boolean) => {
         const now = new Date().getTime();
+        window.localStorage.setItem("items", JSON.stringify(["banana", "muffin"]));
         window.localStorage.setItem("showImages", `${showImage}`);
         window.localStorage.setItem("startTime", now.toString())
         window.localStorage.setItem("cart", "[]");

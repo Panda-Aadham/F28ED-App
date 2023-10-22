@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { addItem, removeItem, cart, getCart } from "./cartHelpers.tsx";
+import { addItem, removeItem, cart, getCart, validateCheckout } from "./cartHelpers.tsx";
 import { useNavigate } from "react-router-dom";
 import { grocery } from "../../data/interfaces.js";
 import "./Cart.css";
@@ -19,6 +19,7 @@ const Cart = () => {
     }
 
     const handleCheckout = () => {
+        console.log(validateCheckout())
         const start = window.localStorage.getItem("startTime")
         const end = new Date().getTime();
         if (start) {

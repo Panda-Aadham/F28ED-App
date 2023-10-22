@@ -49,3 +49,19 @@ export const removeItem = (item: grocery, quantity: number) => {
         setCart(updatedItems);
     }
 }
+
+export const validateCheckout = () => {
+    const cartString = window.localStorage.getItem("cart");
+    const hasItem = [false];
+    if (cartString) {
+        const cart = JSON.parse(cartString)
+        const itemsString = window.localStorage.getItem("items") 
+        if (itemsString) {
+            const items = JSON.parse(itemsString);
+            items.forEach((item, index) => {
+                hasItem[index] = cart.find((cartItem) => cartItem.item.title === item) ? true : false
+            })
+        }
+    }
+    return hasItem.every((element) => element === true) ? true : false
+}
