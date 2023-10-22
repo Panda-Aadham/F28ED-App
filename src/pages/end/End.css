@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 .end-header {
@@ -11,5 +12,36 @@
 
 .end-details {
     display: flex;
+}
+
+.end-finish {
+    margin-top: auto;
+    margin-bottom: 25vh;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.end-check {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.end-continue {
+    width: 80%;
+    height: 60px;
+    border-radius: 20px;
+    font-size: 100%;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    border: transparent;
+    background-color: green;
+    color: white;
+}
+
+.end-continue.disabled {
+    cursor:auto;
+    background-color: slategrey;
+    color: white;
 }
