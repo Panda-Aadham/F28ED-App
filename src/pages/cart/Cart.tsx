@@ -19,12 +19,9 @@ const Cart = () => {
     }
 
     const handleCheckout = () => {
-        const start = window.localStorage.getItem("startTime")
-        const end = new Date().getTime();
-        if (start) {
-            console.log(end - parseInt(start))
-        }
         if (validateCheckout()) {
+            const endTime = new Date().getTime();
+            window.localStorage.setItem("endTime", endTime.toString())
             navigate("/end")
         }
     }
