@@ -11,7 +11,7 @@ const Category = () => {
     const navigate = useNavigate();
     const [data, setData] = useState<category>();
 
-    const showImage = true;
+    const showImage = window.localStorage.getItem("showImages") === "true";
 
     // Find the category data for the page
     useEffect(() => {

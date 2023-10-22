@@ -8,7 +8,7 @@ import "./Home.css";
 
 const Home = () => {
     const navigate = useNavigate();
-    const showImage = true;
+    const showImage = window.localStorage.getItem("showImages") === "true";
 
     const handleClick = (category: category) => {
         navigate("/category" + category.path)

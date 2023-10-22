@@ -12,7 +12,7 @@ const Item = () => {
     const [itemData, setItemData] = useState<grocery>();
     const [quantity, setQuantity] = useState(0);
 
-    const showImage = true;
+    const showImage = window.localStorage.getItem("showImages") === "true";
 
     // Find item data from category
     useEffect(() => {
