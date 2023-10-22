@@ -4,6 +4,7 @@ import "./Start.css";
 
 const Start = () => {
     const navigate = useNavigate();
+    const items = ["Banana","Muffin"]
 
     const handleClick = (showImage: boolean) => {
         const now = new Date().getTime();
@@ -29,6 +30,16 @@ const Start = () => {
                 className="start-button">
                 Without images
             </button>
+            <div className="start-items">
+            Items to find
+            <div className="start-find-items">
+                {items.map((item, index) => (
+                    <div key={index} className="start-item">
+                        {item}
+                    </div>
+                ))}
+            </div>
+            </div>
         </div>
     )
 }
