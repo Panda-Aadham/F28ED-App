@@ -19,11 +19,13 @@ const Cart = () => {
     }
 
     const handleCheckout = () => {
-        console.log(validateCheckout())
         const start = window.localStorage.getItem("startTime")
         const end = new Date().getTime();
         if (start) {
             console.log(end - parseInt(start))
+        }
+        if (validateCheckout()) {
+            navigate("/end")
         }
     }
 

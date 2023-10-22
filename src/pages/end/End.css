@@ -1,0 +1,10 @@
+.end-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.end-header {
+    margin-block: 2%;
+}

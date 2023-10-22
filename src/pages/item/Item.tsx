@@ -10,7 +10,7 @@ const Item = () => {
     const { categoryName, itemName } = useParams();
     const navigate = useNavigate();
     const [itemData, setItemData] = useState<grocery>();
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
 
     const showImage = window.localStorage.getItem("showImages") === "true";
 
@@ -38,7 +38,7 @@ const Item = () => {
 
     // Increase/decrease quantity
     const handleClickQuantity = (value: number) => {
-        if (quantity == 0) {
+        if (quantity == 1) {
             if (value != -1)
                 setQuantity(quantity + value)
         } else setQuantity(quantity + value)

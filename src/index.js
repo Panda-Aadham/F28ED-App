@@ -6,6 +6,7 @@ import Home from './pages/home/Home.tsx';
 import Category from './pages/category/Category.tsx';
 import Item from './pages/item/Item.tsx';
 import Cart from './pages/cart/Cart.tsx';
+import End from './pages/end/End.tsx';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -18,6 +19,7 @@ root.render(
         <Route path="/category/:categoryName" element={<Category />} />
         <Route path="/category/:categoryName/:itemName" element={<Item />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/end" element={<End />} />
       </Routes>
   </BrowserRouter>
 );
