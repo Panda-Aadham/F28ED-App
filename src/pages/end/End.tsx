@@ -20,7 +20,7 @@ const End = () => {
         const end = window.localStorage.getItem("endTime")
         if (start && end) {
             const total = parseInt(end) - parseInt(start)
-            setTotalTime(`${total/1000} seconds`)
+            setTotalTime(`${(total/1000).toFixed(1)} seconds`)
         }
     }, [])
 
