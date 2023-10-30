@@ -2,9 +2,28 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Start.css";
 
+
+var validItems = ['Croissant', 'Baguette', 'Muffin', 'Milk', 'Cheese', 'Yogurt', 'Salmon', 'Tuna', 'Cod', 'Banana', 'Pineapple', 'Lemon', 'Orange Juice', 'Apple Juice', 'Grape Juice', 'Chicken', 'Beef', 'Pork', 'Spaghetti', 'Penne', "Fusilli", 'Crips', 'Candy', 'Pretzels', 'Broccoli', 'Carrots', 'Cabbage']
+
 const Start = () => {
     const navigate = useNavigate();
-    const items = ["Banana","Muffin"]
+
+
+    function generateItems(){
+        var item1 = validItems[Math.floor(Math.random() * validItems.length)];
+        var item2 = validItems[Math.floor(Math.random() * validItems.length)];
+
+        while(item1 == item2){
+            item2 = validItems[Math.floor(Math.random() * validItems.length)];
+        }
+
+        return([item1, item2])
+    }
+
+
+   
+    
+    const items =  generateItems()
 
     const handleClick = (showImage: boolean) => {
         const now = new Date().getTime();
