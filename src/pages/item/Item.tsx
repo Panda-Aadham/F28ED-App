@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { grocery } from "../../data/interfaces";
-import categories from "../../data/categories.tsx";
-import { addItem, setLastPath } from "../cart/cartHelpers.tsx";
+import { category, grocery } from "../../data/interfaces";
+import categories from "../../data/categories";
+import { addItem, setLastPath } from "../cart/cartHelpers";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Item.css";
 
@@ -16,11 +16,11 @@ const Item = () => {
 
     // Find item data from category
     useEffect(() => {
-        categories.forEach((row) => {
+        categories.forEach((row: category[]) => {
             const foundCell = row.find(
-                (cell) => cell.title.toLowerCase() === categoryName)
+                (cell: category) => cell.title.toLowerCase() === categoryName)
             if (foundCell) {
-                setItemData(foundCell.items.find((item) =>
+                setItemData(foundCell.items.find((item: grocery) =>
                     item.title.toLowerCase().replace(" ","") == itemName
                 ))
             }

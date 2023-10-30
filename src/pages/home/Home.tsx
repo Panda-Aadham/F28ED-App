@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import categories from "../../data/categories.tsx"
-import { category } from "../../data/interfaces.tsx";
-import { setLastPath } from "../cart/cartHelpers.tsx";
+import categories from "../../data/categories"
+import { category } from "../../data/interfaces";
+import { setLastPath } from "../cart/cartHelpers";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Home.css";
 
@@ -28,9 +28,9 @@ const Home = () => {
                 </div>
             </header>
             <div className="category-grid">
-                {categories.map((row, rowIndex) => (
+                {categories.map((row: category[], rowIndex: number) => (
                 <div className="category-row" key={rowIndex}>
-                    {row.map((category, cellIndex) => (
+                    {row.map((category: category, cellIndex: number) => (
                     <button
                         key={cellIndex}
                         className="category-button"

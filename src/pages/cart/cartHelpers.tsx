@@ -1,6 +1,6 @@
 import { grocery } from "../../data/interfaces";
 
-interface cartItem {
+export interface cartItem {
     item: grocery;
     quantity: number;
 }
@@ -58,8 +58,8 @@ export const validateCheckout = () => {
         const itemsString = window.localStorage.getItem("items") 
         if (itemsString) {
             const items = JSON.parse(itemsString);
-            items.forEach((item, index) => {
-                hasItem[index] = cart.find((cartItem) => cartItem.item.title === item) ? true : false
+            items.forEach((item: string, index: number) => {
+                hasItem[index] = cart.find((cartItem: cartItem) => cartItem.item.title === item) ? true : false
             })
         }
     }

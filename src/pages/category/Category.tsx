@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import categories from "../../data/categories.tsx";
-import { setLastPath } from "../cart/cartHelpers.tsx";
-import { category } from "../../data/interfaces";
+import categories from "../../data/categories";
+import { setLastPath } from "../cart/cartHelpers";
+import { category, grocery } from "../../data/interfaces";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Category.css";
 
@@ -15,15 +15,15 @@ const Category = () => {
 
     // Find the category data for the page
     useEffect(() => {
-        categories.forEach((row) => {
+        categories.forEach((row: category[]) => {
             const foundCell = row.find(
-                (cell) => cell.title.toLowerCase() === categoryName)
+                (cell: category) => cell.title.toLowerCase() === categoryName)
             if (foundCell) setData(foundCell)
         }
         )
     }, [])
 
-    const handleClickItem = (item) => {
+    const handleClickItem = (item: grocery) => {
         navigate("/category/" + categoryName + item.path)
     }
 
@@ -45,7 +45,7 @@ const Category = () => {
                 </div>
             </header>
             <div className="item-grid">
-                {data.items.map((item, index) => (
+                {data.items.map((item: grocery, index: number) => (
                     <button
                         key={index}
                         className="item-button"

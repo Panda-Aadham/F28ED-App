@@ -1,12 +1,12 @@
-import bakery from "./categories/bakery.tsx";
-import dairy from "./categories/dairy.tsx";
-import fish from "./categories/fish.tsx";
-import fruits from "./categories/fruits.tsx";
-import juice from "./categories/juice.tsx";
-import meats from "./categories/meats.tsx";
-import pasta from "./categories/pasta.tsx";
-import snacks from "./categories/snacks.tsx";
-import vegetables from "./categories/vegetables.tsx";
+import bakery from "./categories/bakery";
+import dairy from "./categories/dairy";
+import fish from "./categories/fish";
+import fruits from "./categories/fruits";
+import juice from "./categories/juice";
+import meats from "./categories/meats";
+import pasta from "./categories/pasta";
+import snacks from "./categories/snacks";
+import vegetables from "./categories/vegetables";
 
 const categories = [
     [fruits, pasta, juice],

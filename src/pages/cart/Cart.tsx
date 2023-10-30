@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { addItem, removeItem, cart, getCart, validateCheckout } from "./cartHelpers.tsx";
+import { addItem, removeItem, cart, getCart, validateCheckout, cartItem } from "./cartHelpers";
 import { useNavigate } from "react-router-dom";
 import { grocery } from "../../data/interfaces.js";
 import "./Cart.css";
@@ -42,7 +42,7 @@ const Cart = () => {
                 <h1>Shopping Cart</h1>
             </header>
             <div className="cart-items">
-                {cartData.map((grocery, index) => (
+                {cartData.map((grocery: cartItem, index: number) => (
                     <div key={index} className="cart-item">
                         <div className="cart-item-title">{grocery.item.title}</div>
                         <div className="cart-quantity">
