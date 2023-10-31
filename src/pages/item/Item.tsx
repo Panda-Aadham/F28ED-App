@@ -5,6 +5,7 @@ import categories from "../../data/categories";
 import { addItem, setLastPath } from "../cart/cartHelpers";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import "./Item.css";
+import ExperimentPage from "../ExperimentPage";
 
 const Item = () => {
     const { categoryName, itemName } = useParams();
@@ -56,44 +57,46 @@ const Item = () => {
     }
     
     return(
-        itemData && <div className="item-page">
-            <header className="item-header">
-                <h1 className="item-title">{itemData.title}</h1>
-                <div onClick={handleClickCart}>
-                    <ShoppingCartIcon fontSize="large" className="item-cart"/>
+        itemData && <ExperimentPage>
+            <div className="item-page">
+                <header className="item-header">
+                    <h1 className="item-title">{itemData.title}</h1>
+                    <div onClick={handleClickCart}>
+                        <ShoppingCartIcon fontSize="large" className="item-cart"/>
+                    </div>
+                </header>
+                <div className="item-display">
+                    {showImage && <img 
+                        src={itemData.image}
+                        alt="item display"
+                        className="item-display-image"/>}
+                    <h3>{itemData.description}</h3>
                 </div>
-            </header>
-            <div className="item-display">
-                {showImage && <img 
-                    src={itemData.image}
-                    alt="item display"
-                    className="item-display-image"/>}
-                <h3>{itemData.description}</h3>
-            </div>
-            <div className="item-control">
-                <h3>Quantity</h3>
-                <div className="item-cart-grid">
+                <div className="item-control">
+                    <h3>Quantity</h3>
+                    <div className="item-cart-grid">
+                        <button
+                            onClick={() => handleClickQuantity(-1)}
+                            className="item-cart-button">-</button>
+                        <span className="number">{quantity}</span>
+                        <button
+                            onClick={() => handleClickQuantity(1)}
+                            className="item-cart-button">+</button>
+                    </div>
                     <button
-                        onClick={() => handleClickQuantity(-1)}
-                        className="item-cart-button">-</button>
-                    <span className="number">{quantity}</span>
+                        className={addedToCart ? "item-cart-button item-add-cart added" : "item-cart-button item-add-cart"}
+                        onClick={() => handleAddToCart(itemData, quantity)}
+                        disabled={addedToCart}>
+                        {addedToCart ? "Item added" : "Add to cart"}
+                    </button>
                     <button
-                        onClick={() => handleClickQuantity(1)}
-                        className="item-cart-button">+</button>
+                        className="item-back-button"
+                        onClick={handleClickBack}>
+                        Back
+                    </button>
                 </div>
-                <button
-                    className={addedToCart ? "item-cart-button item-add-cart added" : "item-cart-button item-add-cart"}
-                    onClick={() => handleAddToCart(itemData, quantity)}
-                    disabled={addedToCart}>
-                    {addedToCart ? "Item added" : "Add to cart"}
-                </button>
-                <button
-                    className="item-back-button"
-                    onClick={handleClickBack}>
-                    Back
-                </button>
             </div>
-        </div>
+        </ExperimentPage> 
     )
 }
 

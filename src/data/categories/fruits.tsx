@@ -1,4 +1,4 @@
-import { category, grocery } from "../interfaces";
+import { category } from "../interfaces";
 
 const fruits: category = {
     title: "Fruits",

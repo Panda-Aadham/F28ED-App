@@ -1,15 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import categories from "../../data/categories";
 import "./Start.css";
+import { category, grocery } from "../../data/interfaces";
 
 
-var validItems = ['Croissant', 'Baguette', 'Muffin', 'Milk', 'Cheese', 'Yogurt', 'Salmon', 'Tuna', 'Cod', 'Banana', 'Pineapple', 'Lemon', 'Orange Juice', 'Apple Juice', 'Grape Juice', 'Chicken', 'Beef', 'Pork', 'Spaghetti', 'Penne', "Fusilli", 'Crips', 'Candy', 'Pretzels', 'Broccoli', 'Carrots', 'Cabbage']
+const validItems = categories.flatMap((row: category[]) =>
+  row.flatMap((category: category) =>
+    category.items.map((item: grocery) => item.title)
+  )
+);
 
 const Start = () => {
     const navigate = useNavigate();
 
 
-    function generateItems(){
+    const generateItems = () => {
         var item1 = validItems[Math.floor(Math.random() * validItems.length)];
         var item2 = validItems[Math.floor(Math.random() * validItems.length)];
 
@@ -20,16 +26,33 @@ const Start = () => {
         return([item1, item2])
     }
 
-
-   
     
-    const items =  generateItems()
+    const items =  generateItems();
+    const itemCategories = ["",""]
+    
+    const findCategories = () => {
+        items.forEach((item: string, index: number) => {
+            categories.forEach((row: category[]) => {
+                row.forEach((category: category) => {
+                    const foundItem = category.items.find((grocery) => grocery.title === item)
+                    if (foundItem) {
+                        const title = category.title.replace(" ","").toLowerCase();
+                        itemCategories[index] = title
+                    }
+                })
+            })
+        })
+    }
 
+    findCategories()
+    
     const handleClick = (showImage: boolean) => {
         const now = new Date().getTime();
         window.localStorage.setItem("items", JSON.stringify(items));
+        window.localStorage.setItem("categories", JSON.stringify(itemCategories));
         window.localStorage.setItem("showImages", `${showImage}`);
         window.localStorage.setItem("startTime", now.toString())
+        window.localStorage.setItem("wrongPages", "0")
         window.localStorage.setItem("cart", "[]");
         navigate("/home")
     }
