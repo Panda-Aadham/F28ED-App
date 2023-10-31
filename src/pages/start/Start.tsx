@@ -13,7 +13,7 @@ const Start = () => {
         var item1 = validItems[Math.floor(Math.random() * validItems.length)];
         var item2 = validItems[Math.floor(Math.random() * validItems.length)];
 
-        while(item1 == item2){
+        while(item1 === item2){
             item2 = validItems[Math.floor(Math.random() * validItems.length)];
         }
 

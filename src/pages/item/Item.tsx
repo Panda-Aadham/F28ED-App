@@ -11,6 +11,7 @@ const Item = () => {
     const navigate = useNavigate();
     const [itemData, setItemData] = useState<grocery>();
     const [quantity, setQuantity] = useState(1);
+    const [addedToCart, setAddedToCart] = useState(false);
 
     const showImage = window.localStorage.getItem("showImages") === "true";
 
@@ -21,7 +22,7 @@ const Item = () => {
                 (cell: category) => cell.title.toLowerCase() === categoryName)
             if (foundCell) {
                 setItemData(foundCell.items.find((item: grocery) =>
-                    item.title.toLowerCase().replace(" ","") == itemName
+                    item.title.toLowerCase().replace(" ","") === itemName
                 ))
             }
         })
@@ -36,10 +37,20 @@ const Item = () => {
         navigate("/cart")
     }
 
+    // Handle click "add to cart"
+    const handleAddToCart = (itemData: grocery, quantity: number) => {
+        setAddedToCart(true);
+        addItem(itemData, quantity)
+
+        setTimeout(() => {
+            setAddedToCart(false);
+        }, 1250);
+      };
+
     // Increase/decrease quantity
     const handleClickQuantity = (value: number) => {
-        if (quantity == 1) {
-            if (value != -1)
+        if (quantity === 1) {
+            if (value !== -1)
                 setQuantity(quantity + value)
         } else setQuantity(quantity + value)
     }
@@ -55,6 +66,7 @@ const Item = () => {
             <div className="item-display">
                 {showImage && <img 
                     src={itemData.image}
+                    alt="item display"
                     className="item-display-image"/>}
                 <h3>{itemData.description}</h3>
             </div>
@@ -70,8 +82,11 @@ const Item = () => {
                         className="item-cart-button">+</button>
                 </div>
                 <button
-                    className="item-cart-button item-add-cart"
-                    onClick={() => addItem(itemData, quantity)}>Add to cart</button>
+                    className={addedToCart ? "item-cart-button item-add-cart added" : "item-cart-button item-add-cart"}
+                    onClick={() => handleAddToCart(itemData, quantity)}
+                    disabled={addedToCart}>
+                    {addedToCart ? "Item added" : "Add to cart"}
+                </button>
                 <button
                     className="item-back-button"
                     onClick={handleClickBack}>
