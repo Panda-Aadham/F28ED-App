@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./ExperimentPage.css"
 
 // This is a component to check if page visited is right or wrong
 const ExperimentPage = ({ children }: any) => {
@@ -50,7 +51,7 @@ const ExperimentPage = ({ children }: any) => {
     }, [])
 
     return(
-        <div>
+        <div className="web-page">
             {children}
         </div>
     )
