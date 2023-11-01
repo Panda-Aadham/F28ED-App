@@ -81,11 +81,13 @@ const End = () => {
 const PinModal = (props: {setShowDetails: (arg0: boolean) => void, setOpenModal: (arg0: boolean) => void, openModal: boolean}) => {
     const inputRefs: RefObject<HTMLInputElement>[] = Array(4).fill(null).map(() => React.createRef());
     const {setShowDetails, openModal, setOpenModal} = props;
+    const [wrongPin, setWrongPin] = useState(false);
     const [pin, setPin] = useState("");
     const correctPin = "1234"
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const value = event.target.value;
+        setWrongPin(false);
         if (/^\d*$/.test(value) && value.length <= 1) {
         setPin((prevPin) => {
             const newPin = prevPin.split("");
@@ -103,7 +105,10 @@ const PinModal = (props: {setShowDetails: (arg0: boolean) => void, setOpenModal:
     const handleSubmit = () => {
         if (pin === correctPin) {
             setShowDetails(true)
+            setWrongPin(false)
             handleClose();
+        } else {
+            setWrongPin(true)
         }
     }
 
@@ -121,8 +126,8 @@ const PinModal = (props: {setShowDetails: (arg0: boolean) => void, setOpenModal:
         >
             <Box className="modal-box">
                 <div className="modal-content">
-                    <h3 className="modal-title">
-                        Enter moderator pin
+                    <h3 className={wrongPin ? "modal-title wrong" :"modal-title"}>
+                        {wrongPin ? "Wrong pin entered" :"Enter moderator pin"}
                     </h3>
                     <div className="modal-pin-inputs">
                         <input
