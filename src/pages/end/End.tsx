@@ -1,29 +1,16 @@
 import React, { RefObject, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import "./End.css";
-
-const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-    "text-align": 'center',
-  };
 
 const End = () => {
     const [totalTime, setTotalTime] = useState("");
     const [wrongPages, setWrongPages] = useState("");
     const [showDetails, setShowDetails] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
     const navigate = useNavigate();
 
@@ -62,7 +49,7 @@ const End = () => {
                 </div>
                 : 
                 <button
-                    onClick={() => setShowDetails(true)}
+                    onClick={() => setOpenModal(true)}
                     className="show-end-details">
                     Show details
                 </button>
@@ -83,15 +70,19 @@ const End = () => {
                     Continue
                 </button>
             </div>
-            <PinModal/>
+            <PinModal
+                setShowDetails={setShowDetails}
+                setOpenModal={setOpenModal}
+                openModal={openModal}/>
         </div>
     )
 }
 
-const PinModal = () => {
-    const [openModal, setOpenModal] = useState(false);
-    const [pin, setPin] = useState("");
+const PinModal = (props: {setShowDetails: (arg0: boolean) => void, setOpenModal: (arg0: boolean) => void, openModal: boolean}) => {
     const inputRefs: RefObject<HTMLInputElement>[] = Array(4).fill(null).map(() => React.createRef());
+    const {setShowDetails, openModal, setOpenModal} = props;
+    const [pin, setPin] = useState("");
+    const correctPin = "1234"
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const value = event.target.value;
@@ -109,59 +100,68 @@ const PinModal = () => {
         }
     };
 
-    const handleOpen = () => setOpenModal(true);
-    const handleClose = () => setOpenModal(false);
+    const handleSubmit = () => {
+        if (pin === correctPin) {
+            setShowDetails(true)
+            handleClose();
+        }
+    }
+
+    const handleClose = () => {
+        setOpenModal(false)
+        setPin("")
+    };
 
     return (
-        <>
-            <Button onClick={handleOpen}>Open modal</Button>
-            <Modal
-                open={openModal}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                <Typography
-                    id="modal-modal-title"
-                    className="modal-title"
-                    variant="h6"
-                    component="h2">
-                    Enter moderator pin
-                </Typography>
-                <div className="modal-pin-inputs">
-                    <input
-                        type="text"
-                        className="modal-pin-input"
-                        ref={inputRefs[0]}
-                        value={pin[0] || ""}
-                        onChange={(e) => handleInputChange(e, 0)}
-                    />
-                    <input
-                        type="text"
-                        className="modal-pin-input"
-                        ref={inputRefs[1]}
-                        value={pin[1] || ""}
-                        onChange={(e) => handleInputChange(e, 1)}
-                    />
-                    <input
-                        type="text"
-                        className="modal-pin-input"
-                        ref={inputRefs[2]}
-                        value={pin[2] || ""}
-                        onChange={(e) => handleInputChange(e, 2)}
-                    />
-                    <input
-                        type="text"
-                        className="modal-pin-input"
-                        ref={inputRefs[3]}
-                        value={pin[3] || ""}
-                        onChange={(e) => handleInputChange(e, 3)}
-                    />
+        <Modal
+            open={openModal}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+        >
+            <Box className="modal-box">
+                <div className="modal-content">
+                    <h3 className="modal-title">
+                        Enter moderator pin
+                    </h3>
+                    <div className="modal-pin-inputs">
+                        <input
+                            type="text"
+                            className="modal-pin-input"
+                            ref={inputRefs[0]}
+                            value={pin[0] || ""}
+                            onChange={(e) => handleInputChange(e, 0)}
+                        />
+                        <input
+                            type="text"
+                            className="modal-pin-input"
+                            ref={inputRefs[1]}
+                            value={pin[1] || ""}
+                            onChange={(e) => handleInputChange(e, 1)}
+                        />
+                        <input
+                            type="text"
+                            className="modal-pin-input"
+                            ref={inputRefs[2]}
+                            value={pin[2] || ""}
+                            onChange={(e) => handleInputChange(e, 2)}
+                        />
+                        <input
+                            type="text"
+                            className="modal-pin-input"
+                            ref={inputRefs[3]}
+                            value={pin[3] || ""}
+                            onChange={(e) => handleInputChange(e, 3)}
+                        />
+                    </div>
+                    <button
+                        onClick={handleSubmit}
+                        className="modal-submit">
+                        Submit pin
+                    </button>
                 </div>
-                </Box>
-            </Modal>
-        </>
+            </Box>
+        </Modal>
     )
 }
 
