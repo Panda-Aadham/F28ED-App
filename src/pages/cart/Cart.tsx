@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { addItem, removeItem, cart, getCart, validateCheckout, cartItem } from "./cartHelpers";
+import ExperimentPage from "../experimentPage/ExperimentPage";
 import { useNavigate } from "react-router-dom";
 import { grocery } from "../../data/interfaces.js";
 import "./Cart.css";
@@ -38,7 +39,7 @@ const Cart = () => {
     }
 
     return(
-        <div className="cart-page">
+        <ExperimentPage>
             <header className="cart-header">
                 <h1>Shopping Cart</h1>
             </header>
@@ -70,7 +71,7 @@ const Cart = () => {
                     </button>
                 </div>
             </div>
-        </div>
+        </ExperimentPage>
     )
 }
 

@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ExperimentPage.css"
 
 // This is a component to check if page visited is right or wrong
 const ExperimentPage = ({ children }: any) => {
     const { categoryName, itemName } = useParams();
+    const [itemsToFind, setItemsToFind] = useState([]);
     
     useEffect(() => {
         let rightPage = false;
@@ -14,6 +15,7 @@ const ExperimentPage = ({ children }: any) => {
             const itemCategories = JSON.parse(categoriesString)
             if (itemString) {
                 const items = JSON.parse(itemString)
+                setItemsToFind(items)
                 const isBack = window.localStorage.getItem("isBack")
                 // Check if "Back" was clicked
                 if (isBack === "true") {
@@ -53,6 +55,11 @@ const ExperimentPage = ({ children }: any) => {
     return(
         <div className="web-page">
             {children}
+            <div className="user-items">
+                {itemsToFind && itemsToFind.map((item) => (
+                    <h4 className="user-item">{item}</h4>
+                ))}
+            </div>
         </div>
     )
 }

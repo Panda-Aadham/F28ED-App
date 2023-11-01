@@ -4,3 +4,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.user-items {
+    position: fixed;
+    top: 88%;
+    left: 2%;
+}
+
+.user-item {
+    margin-block: 10px;
+}
