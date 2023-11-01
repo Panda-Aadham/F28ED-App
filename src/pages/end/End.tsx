@@ -131,28 +131,28 @@ const PinModal = (props: {setShowDetails: (arg0: boolean) => void, setOpenModal:
                     </h3>
                     <div className="modal-pin-inputs">
                         <input
-                            type="text"
+                            type="password"
                             className="modal-pin-input"
                             ref={inputRefs[0]}
                             value={pin[0] || ""}
                             onChange={(e) => handleInputChange(e, 0)}
                         />
                         <input
-                            type="text"
+                            type="password"
                             className="modal-pin-input"
                             ref={inputRefs[1]}
                             value={pin[1] || ""}
                             onChange={(e) => handleInputChange(e, 1)}
                         />
                         <input
-                            type="text"
+                            type="password"
                             className="modal-pin-input"
                             ref={inputRefs[2]}
                             value={pin[2] || ""}
                             onChange={(e) => handleInputChange(e, 2)}
                         />
                         <input
-                            type="text"
+                            type="password"
                             className="modal-pin-input"
                             ref={inputRefs[3]}
                             value={pin[3] || ""}
