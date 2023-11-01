@@ -58,3 +58,15 @@
     background-color: slategrey;
     color: white;
 }
+
+/* Modal Styling */
+.modal-pin-inputs {
+    display: flex;
+    margin-top: 15px;
+    gap: 5px;
+}
+
+.modal-pin-input {
+    width: 30%;
+    height: 40px;
+}
