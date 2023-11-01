@@ -13,10 +13,15 @@ const ExperimentPage = ({ children }: any) => {
             const itemCategories = JSON.parse(categoriesString)
             if (itemString) {
                 const items = JSON.parse(itemString)
+                const isBack = window.localStorage.getItem("isBack")
+                // Check if "Back" was clicked
+                if (isBack === "true") {
+                    window.localStorage.removeItem("isBack")
+                    rightPage = true
                 // Check item page
-                if (itemName) {
+                } else if (itemName) {
                     items.forEach((item: string) => {
-                        if (item === itemName) {
+                        if (item.replace(" ","").toLowerCase() === itemName) {
                             rightPage = true;
                         }
                     })
