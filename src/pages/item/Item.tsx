@@ -38,11 +38,7 @@ const Item = () => {
     const handleAddToCart = (itemData: grocery, quantity: number) => {
         setAddedToCart(true);
         addItem(itemData, quantity)
-
-        setTimeout(() => {
-            setAddedToCart(false);
-        }, 1250);
-      };
+    }
 
     // Increase/decrease quantity
     const handleClickQuantity = (value: number) => {
@@ -67,20 +63,21 @@ const Item = () => {
             </div>
             <div className="item-control">
                 <h3>Quantity</h3>
-                <div className="item-cart-grid">
-                    <button
+                <div className={addedToCart ? "item-cart-grid quantity" : "item-cart-grid"}>
+                    {!addedToCart && <button
                         onClick={() => handleClickQuantity(-1)}
-                        className="item-cart-button">-</button>
+                        className="item-cart-button">-</button>}
                     <span className="number">{quantity}</span>
-                    <button
+                    {!addedToCart && <button
                         onClick={() => handleClickQuantity(1)}
-                        className="item-cart-button">+</button>
+                        className="item-cart-button">+</button>}
+                    
                 </div>
                 <button
                     className={addedToCart ? "item-cart-button item-add-cart added" : "item-cart-button item-add-cart"}
                     onClick={() => handleAddToCart(itemData, quantity)}
                     disabled={addedToCart}>
-                    {addedToCart ? "Item added" : "Add to cart"}
+                    {addedToCart ? "Added to cart" : "Add to cart"}
                 </button>
                 <button
                     className="item-back-button"
