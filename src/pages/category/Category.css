@@ -61,5 +61,10 @@
     font-weight: bold;
     cursor: pointer;
     border: transparent;
-    background-color:slategrey;
+    background-color:darkgrey;
+    transition: background-color 0.3s;
+}
+
+.category-back-button:hover {
+    background-color: lightslategrey
 }

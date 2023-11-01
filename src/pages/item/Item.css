@@ -58,6 +58,7 @@
     border: transparent;
     background-color:black;
     color: #fff;
+    transition: background-color 0.3s;
 }
 
 .item-cart-button:hover {
@@ -74,6 +75,11 @@
     background-color: green;
     margin-top: 10px;
     font-size: 15px;
+    transition: background-color 0.3s;
+}
+
+.item-cart-button.item-add-cart:hover {
+    background-color: darkgreen;
 }
 
 .item-cart-button.item-add-cart.added {
@@ -91,5 +97,10 @@
     margin-top: 10px;
     cursor: pointer;
     border: transparent;
-    background-color:slategrey;
+    background-color:darkgrey;
+    transition: background-color 0.3s;
+}
+
+.item-back-button:hover {
+    background-color: lightslategray;
 }

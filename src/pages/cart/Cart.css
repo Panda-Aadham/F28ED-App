@@ -12,7 +12,12 @@
     margin-top: 10px;
     cursor: pointer;
     border: transparent;
-    background-color:slategrey;
+    background-color:darkgrey;
+    transition: background-color 0.3s;
+}
+
+.cart-back-button:hover {
+    background-color: lightslategray;
 }
 
 .cart-items {
@@ -51,6 +56,7 @@
     border: transparent;
     font-size: 22px;
     font-weight: bold;
+    transition: background-color 0.15s;
 }
 
 .cart-item-qbtn:hover {
@@ -75,4 +81,10 @@
     cursor: pointer;
     border: transparent;
     background-color: green;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.cart-checkout-button:hover {
+    background-color: darkgreen;
 }
