@@ -32,6 +32,7 @@ const Cart = () => {
     }, [])
 
     const handleClickBack = () => {
+        window.localStorage.setItem("isBack", "true")
         const path = window.localStorage.getItem("lastPath")
         if (path) navigate(path)
     }

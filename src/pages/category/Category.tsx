@@ -34,6 +34,7 @@ const Category = () => {
     }
 
     const handleClickBack = () => {
+        window.localStorage.setItem("isBack", "true")
         navigate("/home")
     }
 

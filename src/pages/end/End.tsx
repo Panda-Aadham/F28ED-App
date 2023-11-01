@@ -29,6 +29,9 @@ const End = () => {
             <header className="end-header">
                 <h1>Completed</h1>
             </header>
+            <button className="show-end-details">
+                 Show details
+            </button>
             <div className="end-details">
                 <h3>Completed in: {totalTime}</h3>
             </div>

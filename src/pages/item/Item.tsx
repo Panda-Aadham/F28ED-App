@@ -30,6 +30,7 @@ const Item = () => {
     }, [])
 
     const handleClickBack = () => {
+        window.localStorage.setItem("isBack", "true")
         navigate("/category/" + categoryName)
     }
 

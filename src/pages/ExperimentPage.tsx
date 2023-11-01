@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 // This is a component to check if page visited is right or wrong
 const ExperimentPage = ({ children }: any) => {
     const { categoryName, itemName } = useParams();
-    const [rightPage, setRightPage] = useState(false);
     
     useEffect(() => {
+        let rightPage = false;
         const categoriesString = window.localStorage.getItem("categories")
         const itemString = window.localStorage.getItem("items");
         if (categoriesString) {
             const itemCategories = JSON.parse(categoriesString)
             if (itemString) {
                 const items = JSON.parse(itemString)
-                console.log(itemCategories)
-                console.log("itemName", itemName)
-                console.log("categoryName", categoryName)
                 // Check item page
                 if (itemName) {
                     items.forEach((item: string) => {
                         if (item === itemName) {
-                            setRightPage(true);
+                            rightPage = true;
                         }
                     })
                 // Check category page
@@ -29,18 +26,18 @@ const ExperimentPage = ({ children }: any) => {
                         console.log("category", category)
                         if (category === categoryName) {
                             console.log("setTrue")
-                            setRightPage(true)
+                            rightPage = true;
                         }
                     })
                 // On home page
                 } else {
-                    setRightPage(true)
+                    rightPage = true;
                 }
             }
         }
         
         const wrongPagesString = window.localStorage.getItem("wrongPages");
-        if (rightPage === false && wrongPagesString) {
+        if (!rightPage && wrongPagesString) {
             console.log(rightPage)
             const wrongPages = JSON.parse(wrongPagesString) + 1;
             window.localStorage.setItem("wrongPages", JSON.stringify(wrongPages));
