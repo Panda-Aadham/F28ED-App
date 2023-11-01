@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import categories from "../../data/categories"
 import { category } from "../../data/interfaces";
 import { setLastPath } from "../cart/cartHelpers";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ExperimentPage from "../experimentPage/ExperimentPage";
+import CartIcon from "../cart/CartIcon";
 import "./Home.css";
 
 const Home = () => {
@@ -24,9 +24,7 @@ const Home = () => {
         <ExperimentPage>
             <header className="home-header">
                 <h1 className="home-title">Shoppy Shop</h1>
-                <div onClick={handleClickCart}>
-                    <ShoppingCartIcon fontSize="large" className="home-cart"/>
-                </div>
+                <CartIcon/>
             </header>
             <div className="category-grid">
                 {categories.map((row: category[], rowIndex: number) => (

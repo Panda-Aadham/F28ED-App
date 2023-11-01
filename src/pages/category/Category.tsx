@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import categories from "../../data/categories";
-import { setLastPath } from "../cart/cartHelpers";
 import { category, grocery } from "../../data/interfaces";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ExperimentPage from "../experimentPage/ExperimentPage";
+import CartIcon from "../cart/CartIcon";
 import "./Category.css";
 
 const Category = () => {
@@ -28,11 +27,6 @@ const Category = () => {
         navigate("/category/" + categoryName + item.path)
     }
 
-    const handleClickCart = () => {
-        setLastPath();
-        navigate("/cart")
-    }
-
     const handleClickBack = () => {
         window.localStorage.setItem("isBack", "true")
         navigate("/home")
@@ -42,9 +36,7 @@ const Category = () => {
         data && <ExperimentPage>
             <header className="category-header">
                 <h1 className="category-title">{data.title}</h1>
-                <div onClick={handleClickCart}>
-                    <ShoppingCartIcon fontSize="large" className="category-cart"/>
-                </div>
+                <CartIcon/>
             </header>
             <div className="item-grid">
                 {data.items.map((item: grocery, index: number) => (

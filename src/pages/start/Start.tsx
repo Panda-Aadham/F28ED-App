@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import categories from "../../data/categories";
-import "./Start.css";
 import { category, grocery } from "../../data/interfaces";
+import "./Start.css";
 
 
 const validItems = categories.flatMap((row: category[]) =>
@@ -22,7 +22,6 @@ const Start = () => {
         while(item1 === item2){
             item2 = validItems[Math.floor(Math.random() * validItems.length)];
         }
-
         return([item1, item2])
     }
 

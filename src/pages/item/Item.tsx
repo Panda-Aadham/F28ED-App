@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { category, grocery } from "../../data/interfaces";
 import categories from "../../data/categories";
-import { addItem, setLastPath } from "../cart/cartHelpers";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { addItem } from "../cart/cartHelpers";
 import ExperimentPage from "../experimentPage/ExperimentPage";
+import CartIcon from "../cart/CartIcon";
 import "./Item.css";
 
 const Item = () => {
@@ -34,11 +34,6 @@ const Item = () => {
         navigate("/category/" + categoryName)
     }
 
-    const handleClickCart = () => {
-        setLastPath();
-        navigate("/cart")
-    }
-
     // Handle click "add to cart"
     const handleAddToCart = (itemData: grocery, quantity: number) => {
         setAddedToCart(true);
@@ -61,9 +56,7 @@ const Item = () => {
         itemData && <ExperimentPage>
             <header className="item-header">
                 <h1 className="item-title">{itemData.title}</h1>
-                <div onClick={handleClickCart}>
-                    <ShoppingCartIcon fontSize="large" className="item-cart"/>
-                </div>
+                <CartIcon/>
             </header>
             <div className="item-display">
                 {showImage && <img 
