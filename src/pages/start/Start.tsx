@@ -16,11 +16,13 @@ const Start = () => {
 
     //keeps track of events
     var experimentAttempts = window.localStorage.getItem("attempts")
+    var restartExp = window.localStorage.getItem("restartExperiment")
     console.log(experimentAttempts)
 
-    if(experimentAttempts == null){
+    if(experimentAttempts == null || restartExp == "true"){
         experimentAttempts = "none";
         window.localStorage.setItem("attempts", "none")
+        window.localStorage.setItem("restartExperiment", "false")
     }
 
     const generateItems = () => {
@@ -62,7 +64,8 @@ const Start = () => {
                 window.localStorage.setItem("attempts", "images")
             }
             else{
-                window.localStorage.setItem("attempts", "none")
+                window.localStorage.setItem("restartExperiment", "true")
+                window.localStorage.setItem("attempts", "images")
             }
         }
         else{
@@ -70,7 +73,8 @@ const Start = () => {
                 window.localStorage.setItem("attempts", "noimages")
             }
             else{
-                window.localStorage.setItem("attempts", "none")
+                window.localStorage.setItem("restartExperiment", "true")
+                window.localStorage.setItem("attempts", "noimages")
             }
         }
 

@@ -8,6 +8,7 @@ import "./End.css";
 const End = () => {
     const [totalTime, setTotalTime] = useState("");
     const [wrongPages, setWrongPages] = useState("");
+    const [attemptDone, setAttemptDone] = useState("");
     const [showDetails, setShowDetails] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [openModal, setOpenModal] = useState(false);
@@ -26,11 +27,13 @@ const End = () => {
         const start = window.localStorage.getItem("startTime")
         const end = window.localStorage.getItem("endTime")
         const wrongPageString = window.localStorage.getItem("wrongPages")
+        const attemptsString = window.localStorage.getItem("attempts")
         if (start && end) {
             const total = parseInt(end) - parseInt(start)
             setTotalTime(`${(total/1000).toFixed(1)} seconds`)
         }
         if (wrongPageString) setWrongPages(wrongPageString)
+        if (attemptsString) setAttemptDone(attemptsString)
     }, [])
 
     return(
@@ -45,6 +48,9 @@ const End = () => {
                     </div>
                     <div className="end-details">
                         <h3>Wrong pages visited: {wrongPages}</h3>
+                    </div>
+                    <div className="end-details">
+                        <h3>Attempt Done: {attemptDone}</h3>
                     </div>
                 </div>
                 : 
