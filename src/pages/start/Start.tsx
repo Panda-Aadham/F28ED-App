@@ -14,6 +14,8 @@ const validItems = categories.flatMap((row: category[]) =>
 const Start = () => {
     const navigate = useNavigate();
 
+    console.log(categories.length)
+
     //keeps track of events
     var experimentAttempts = window.localStorage.getItem("attempts")
     var restartExp = window.localStorage.getItem("restartExperiment")
@@ -26,14 +28,38 @@ const Start = () => {
     }
 
     const generateItems = () => {
-        var item1 = validItems[Math.floor(Math.random() * validItems.length)];
-        var item2 = validItems[Math.floor(Math.random() * validItems.length)];
+        let item1Index = Math.floor(Math.random() * validItems.length);
+        let item2Index = Math.floor(Math.random() * validItems.length);
 
-        while(item1 === item2){
-            item2 = validItems[Math.floor(Math.random() * validItems.length)];
+        while (item1Index === item2Index || areItemsFromSameCategory(item1Index, item2Index)) {
+            item2Index = Math.floor(Math.random() * validItems.length);
         }
-        return([item1, item2])
-    }
+
+        var item1 = validItems[item1Index];
+        var item2 = validItems[item2Index];
+
+        while(areItemsFromSameCategory(item1Index, item2Index)){
+            item2Index = Math.floor(Math.random() * validItems.length);
+            item2 = validItems[item2Index];
+        }
+
+        return [item1, item2];
+    };
+
+    const areItemsFromSameCategory = (item1Index: number, item2Index: number) => {
+        for (const row of categories) {
+            const item1Category = row.find((category) =>
+                category.items.some((item) => item.title === validItems[item1Index])
+            );
+            const item2Category = row.find((category) =>
+                category.items.some((item) => item.title === validItems[item2Index])
+            );
+            if (item1Category && item2Category && item1Category.title === item2Category.title) {
+                return true;
+            }
+        }
+        return false;
+    };
 
     
     const items =  generateItems();
