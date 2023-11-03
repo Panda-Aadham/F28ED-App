@@ -14,6 +14,14 @@ const validItems = categories.flatMap((row: category[]) =>
 const Start = () => {
     const navigate = useNavigate();
 
+    //keeps track of events
+    var experimentAttempts = window.localStorage.getItem("attempts")
+    console.log(experimentAttempts)
+
+    if(experimentAttempts == null){
+        experimentAttempts = "none";
+        window.localStorage.setItem("attempts", "none")
+    }
 
     const generateItems = () => {
         var item1 = validItems[Math.floor(Math.random() * validItems.length)];
@@ -47,6 +55,25 @@ const Start = () => {
     
     const handleClick = (showImage: boolean) => {
         const now = new Date().getTime();
+        
+        //1 == images, 2 == no images
+        if(showImage){
+            if(experimentAttempts == "none"){
+                window.localStorage.setItem("attempts", "images")
+            }
+            else{
+                window.localStorage.setItem("attempts", "none")
+            }
+        }
+        else{
+            if(experimentAttempts == "none"){
+                window.localStorage.setItem("attempts", "noimages")
+            }
+            else{
+                window.localStorage.setItem("attempts", "none")
+            }
+        }
+
         window.localStorage.setItem("items", JSON.stringify(items));
         window.localStorage.setItem("categories", JSON.stringify(itemCategories));
         window.localStorage.setItem("showImages", `${showImage}`);
@@ -61,16 +88,20 @@ const Start = () => {
             <header className="start-title">
                 <h1>Start</h1>
             </header>
-            <button
-                onClick={() => handleClick(true)} 
-                className="start-button">
-                With images
-            </button>
+            {(experimentAttempts == "none" || experimentAttempts == "noimages")&& (
+        <button         
+        onClick={() => handleClick(true)} 
+        className="start-button">
+        With images
+        </button>
+            )}
+        {(experimentAttempts == "none" || experimentAttempts == "images")&& (
             <button
                 onClick={() => handleClick(false)} 
                 className="start-button">
                 Without images
             </button>
+        )}
             <div className="start-items">
             Items to find
             <div className="start-find-items">
