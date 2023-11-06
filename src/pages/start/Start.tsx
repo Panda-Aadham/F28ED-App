@@ -21,7 +21,7 @@ const Start = () => {
     var restartExp = window.localStorage.getItem("restartExperiment")
     console.log(experimentAttempts)
 
-    if(experimentAttempts == null || restartExp == "true"){
+    if(experimentAttempts === null || restartExp === "true"){
         experimentAttempts = "none";
         window.localStorage.setItem("attempts", "none")
         window.localStorage.setItem("restartExperiment", "false")
@@ -86,7 +86,7 @@ const Start = () => {
         
         //1 == images, 2 == no images
         if(showImage){
-            if(experimentAttempts == "none"){
+            if(experimentAttempts === "none"){
                 window.localStorage.setItem("attempts", "images")
             }
             else{
@@ -95,7 +95,7 @@ const Start = () => {
             }
         }
         else{
-            if(experimentAttempts == "none"){
+            if(experimentAttempts === "none"){
                 window.localStorage.setItem("attempts", "noimages")
             }
             else{
@@ -118,18 +118,18 @@ const Start = () => {
             <header className="start-title">
                 <h1>Start</h1>
             </header>
-            {(experimentAttempts == "none" || experimentAttempts == "noimages")&& (
-        <button         
-        onClick={() => handleClick(true)} 
-        className="start-button">
-        With images
-        </button>
-            )}
-        {(experimentAttempts == "none" || experimentAttempts == "images")&& (
+        {(experimentAttempts === "none" || experimentAttempts === "noimages") && (
+            <button         
+                onClick={() => handleClick(true)} 
+                className="start-button">
+                Version A
+            </button>
+        )}
+        {(experimentAttempts === "none" || experimentAttempts === "images")&& (
             <button
                 onClick={() => handleClick(false)} 
                 className="start-button">
-                Without images
+                Version B
             </button>
         )}
             <div className="start-items">
